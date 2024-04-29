@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using NArchitecture.Core.CrossCuttingConcerns.Exception.WebApi.Extensions;
 using NArchitecture.Core.CrossCuttingConcerns.Logging.Configurations;
-using NArchitecture.Core.ElasticSearch.Models;
+
 using NArchitecture.Core.Localization.WebApi;
 using NArchitecture.Core.Mailing;
 using NArchitecture.Core.Persistence.WebApi;
