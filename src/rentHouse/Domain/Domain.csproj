@@ -5,11 +5,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Entities\" />
-    <Folder Include="Enums\" />
+    <Compile Remove="Enums\**" />
+    <EmbeddedResource Remove="Enums\**" />
+    <None Remove="Enums\**" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NArchitecture.Core.Persistence" Version="1.0.0" />
     <PackageReference Include="NArchitecture.Core.Security" Version="1.1.1" />
+    <PackageReference Include="Npgsql" Version="8.0.2" />
   </ItemGroup>
 </Project>

@@ -1,7 +1,4 @@
-﻿using System.Reflection;
-using Application.Services.AuthenticatorService;
-using Application.Services.AuthService;
-using Application.Services.UsersService;
+using System.Reflection;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using NArchitecture.Core.Application.Pipelines.Authorization;
@@ -19,6 +16,11 @@ using NArchitecture.Core.Localization.Resource.Yaml.DependencyInjection;
 using NArchitecture.Core.Mailing;
 using NArchitecture.Core.Mailing.MailKit;
 using NArchitecture.Core.Security.DependencyInjection;
+using Application.Services.Businesses;
+using Application.Services.Customers;
+using Application.Services.RentTypes;
+using Application.Services.Estates;
+using Application.Services.Rentals;
 
 namespace Application;
 
@@ -51,14 +53,14 @@ public static class ApplicationServiceRegistration
         services.AddSingleton<ILogger, SerilogFileLogger>(_ => new SerilogFileLogger(fileLogConfiguration));
         services.AddSingleton<IElasticSearch, ElasticSearchManager>(_ => new ElasticSearchManager(elasticSearchConfig));
 
-        services.AddScoped<IAuthService, AuthManager>();
-        services.AddScoped<IAuthenticatorService, AuthenticatorManager>();
-        services.AddScoped<IUserService, UserManager>();
-
         services.AddYamlResourceLocalization();
 
         services.AddSecurityServices<Guid, int>();
-
+        services.AddScoped<IBusinessService, BusinessManager>();
+        services.AddScoped<ICustomerService, CustomerManager>();
+        services.AddScoped<IRentTypeService, RentTypeManager>();
+        services.AddScoped<IEstateService, EstateManager>();
+        services.AddScoped<IRentalService, RentalManager>();
         return services;
     }
 
